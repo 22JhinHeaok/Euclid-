@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#define A 1000
+#define B 1350
+
+int euclid_recursive(int a, int b) {
+    if (b == 0) {
+        return a;
+    }
+    return euclid_recursive(b, a % b);
+}
+
+int euclid_iterative(int a, int b) {
+    int tmp;
+    while (b != 0) {
+        tmp = b;
+        b = a % b;
+        a = tmp;
+    }
+    return a;
+}
+
+int euclid_test_all()
+{
+    time_t start, end;
+    double result= 0, result2= 0;
+    //재귀적 코드 시간
+    start = time(NULL); // 수행 시간 측정 시작
+
+    /* 수행시간 측정하고자 하는 코드 */
+    euclid_recursive(A, B);
+
+    end = time(NULL); // 시간 측정 끝
+    result = (double)(end - start);
+
+    // 결과 출력
+    printf("재귀적 코드 시간은: %f\n", result); 
+    
+    
+    
+    // 반복적 코드 시간
+    start = time(NULL);
+    
+    euclid_iterative(A, B);
+    
+    end = time(NULL);
+    result2 = (double)(end - start);
+    printf("반복적 코드 시간은: %f\n", result2); 
+    
+    
+    return 0;
+}
+
+int main()
+{
+  euclid_test_all();
+}
