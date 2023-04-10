@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int euclid(int a, int b) 
+{
+    int temp;
+    while (b != 0) 
+    {
+        temp = a % b;
+        a = b;
+        b = temp;
+    }
+    return a;
+}
+
+int test1_euclid()
+{
+  int gcd = 0;
+  
+  gcd = euclid(34, 48);
+  printf("Hello World %d\n", gcd);
+  
+  return 0;
+}
+
+int main() 
+{
+  test1_euclid();
+}
